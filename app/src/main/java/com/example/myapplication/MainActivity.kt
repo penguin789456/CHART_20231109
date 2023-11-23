@@ -15,11 +15,11 @@ import com.github.mikephil.charting.data.LineDataSet
 import java.util.jar.JarEntry
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var lineEntry: ArrayList<Entry>
+    private lateinit var lineEntry: ArrayList<com.github.mikephil.charting.data.Entry>
     private lateinit var barEntry:ArrayList<BarEntry>
 
     private lateinit var myBarEntry: BarChart
-    private lateinit var LineChartset: LineChart
+    private lateinit var MyLineCharts: LineChart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,10 +39,11 @@ class MainActivity : AppCompatActivity() {
 
         lineEntry= ArrayList()
         for (i in 1..5){
-            lineEntry.add(Entry(i.toString(), i*10L))
+            lineEntry.add(com.github.mikephil.charting.data.Entry(i*1F,i*10F))
         }
-        LineChartset=findViewById(R.id.chartLine)
+        MyLineCharts=findViewById(R.id.chartLine)
         var LinedataSet1=LineDataSet(lineEntry,"com1")
-
+        var lineData=LineData(LinedataSet1)
+        MyLineCharts.data=lineData
     }
 }
